@@ -1,0 +1,16 @@
+[Unit]
+Description=RGB Matrix Phone Dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=__REPO_DIR__
+ExecStart=__REPO_DIR__/.venv/bin/python __REPO_DIR__/main.py
+Restart=on-failure
+RestartSec=5
+# The rgbmatrix library needs direct GPIO/memory access.
+User=root
+
+[Install]
+WantedBy=multi-user.target
